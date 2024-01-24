@@ -1,0 +1,1 @@
+alter table api.medicos add telefone varchar(20) not null default '';

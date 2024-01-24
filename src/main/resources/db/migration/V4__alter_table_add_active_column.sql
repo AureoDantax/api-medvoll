@@ -1,0 +1,1 @@
+alter table api.medicos add column ativo bool not null default true;
