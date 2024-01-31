@@ -1,4 +1,4 @@
-package br.com.med.voll.api.paciente;
+package br.com.med.voll.api.domain.paciente;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
