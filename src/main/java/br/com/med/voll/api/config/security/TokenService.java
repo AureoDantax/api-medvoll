@@ -19,7 +19,6 @@ public class TokenService {
 
     @Value("${api.security.token.secret}")
     private String secret;
-
     public String generateToken(Usuario usuario) {
 
         try {
@@ -39,6 +38,7 @@ public class TokenService {
 
     }
 
+
     public String getSubject(String jwt) {
 
 
@@ -54,7 +54,6 @@ public class TokenService {
             throw new JWTCreationException("falha ao validar token, motivo:  ", ex);
         }
     }
-
     private Instant expiracaoToken() {
         return LocalDateTime.now().plusMinutes(30).toInstant(ZoneOffset.of("-03:00"));
     }
