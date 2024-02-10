@@ -9,16 +9,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.Arrays;
 
 @Service
 @Slf4j
 public class TokenService {
-
 
     @Value("${api.security.token.secret}")
     private String secret;
@@ -27,6 +24,7 @@ public class TokenService {
 
         try {
             var algoritmo = Algorithm.HMAC256(secret);
+
             return JWT.create().
                     withIssuer("voll.med API").
                     withExpiresAt(expiracaoToken()).
