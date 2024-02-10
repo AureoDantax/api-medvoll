@@ -11,6 +11,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -24,7 +25,7 @@ public class MedicoController {
 
     @PostMapping("/cadastro")
     @Transactional
-    public ResponseEntity cadastra(@Valid @RequestBody CadastroMedicoDTO cadastroMedicoDTO, UriComponentsBuilder uricb) {
+    public ResponseEntity<DetalhaMedicoDTO> cadastra(@Valid @RequestBody CadastroMedicoDTO cadastroMedicoDTO, UriComponentsBuilder uricb) {
         var medico = new Medico(cadastroMedicoDTO);
         medicoRepository.save(medico);
         var uri = uricb.path("/medicos/{id}").buildAndExpand(medico.getId()).toUri();
